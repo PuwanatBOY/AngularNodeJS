@@ -1,17 +1,30 @@
-//โหลดโมดูล express จากนั้นเก็บผลลัพธ์ลงในตัวแปร expressFunction 
-const expressFunction = require('express');
-//เรียกฟังก์ชัน expressFunction() ซึ่งผลลัพธ์จะได้้กลับมาเป็นออบเจ็กต์ แล้วนำไปเก็บยังตัวแปร express 
-const expressApp = expressFunction();
+const express = require("express");
+const expressApp = express();
+const authRoute = require("./routes/auth");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const port = process.env.port || 3000;
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(authRoute);
+
 expressApp.use(function(req, res, next) {
-    // Website you wish to allow to connect 
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
-    // Pass to next layer of middleware 
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     next();
 });
-//เรียกใช้เมธอด get เพื่อตรวจสอบพาธที่ส่งมาพร้อมกับ HTTP Request โดยกำหนด Endpoint 
-expressApp.get('/api/resource', function(req, res) {
-    const myJson = { id: 'B6004804', name: 'Puwanat Torcheewee' };
-    res.send(myJson);
+
+mongoose
+  .connect(
+    "mongodb+srv://PhoneShop:PhoneShop123@cluster0-oohk7.mongodb.net/Shop?retryWrites=true",
+    { useNewUrlParser: true, useCreateIndex: true }
+  )
+  .then(() => {
+    console.log("Database Connected!");
+  })
+  .catch(() => {
+    console.log("Can not Connect to Database!!!!");
+  });
+  
+app.listen(port, function() {
+  console.log("Listening on port", port);
 });
-//สร้าง Event Listener รอการเชื่อมต่อผ่านจากพอร์ต 3000 
-expressApp.listen(3000, function() { console.log('Listening on port 3000'); });
