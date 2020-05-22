@@ -1,4 +1,4 @@
-## Test Angular 9 + Node.Js Express + MongoDB
+## CRUD Angular 9 + Node.Js Express + MongoDB
 
 ### Before RUN
 **1. backend**
@@ -17,5 +17,5 @@
 ### RUN
 * **Start backend :** 
   * node serve.js
-* **Start Client  : **
+* **Start Client  :**
   * ng serve --open --port 8081
