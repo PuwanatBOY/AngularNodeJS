@@ -7,7 +7,7 @@
 * npm install mongoose
 * npm install express mongoose body-parser cors --save
 
-* serve: mongodb+srv://PhoneShop:PhoneShop123@cluster0-oohk7.mongodb.net/test
+* serve: mongodb+srv://PhoneShop:PhoneShop123@cluster0-oohk7.mongodb.net/tutorials
 
 **2. client**
 * npm install
@@ -15,5 +15,7 @@
 * npm install @angular/http
 
 ### RUN
-* Start backend : node serve.js
-* Start Client  : ng serve --open --port 8081
+* **Start backend :** 
+  * node serve.js
+* **Start Client  : **
+  * ng serve --open --port 8081
